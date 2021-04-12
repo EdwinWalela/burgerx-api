@@ -72,6 +72,24 @@ router.put('/:id',async (req,res)=>{
 
 })
 
+router.delete('/:id',async(req,res)=>{
+    let id = req.params.id;
+
+    try{
+        await Menu.findByIdAndDelete(id);
+    }catch(err){
+        console.log(err);
+        res.status(500).send({
+            msg:"Unable to delete item",
+            err
+        })
+    }
+
+    res.status(200).send({
+        msg:"Item deleted"
+    })
+})
+
 router.post('/',async(req,res)=>{
     let menuItem = {
         thumb:req.body.thumb.trim(),
