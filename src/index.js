@@ -8,15 +8,18 @@ const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.DB_URI;
 
 const menuRoutes = require('./routes/menu');
+const orderRoutes = require('./routes/order');
 
 mongoose.connect(DB_URI,{useNewUrlParser:true,useUnifiedTopology:true},()=>{
     console.log('DB connection successful');
 });
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
+app.use(express.json());
 
 // Routes
 app.use('/api/menu',menuRoutes);
+app.use('/api/order',orderRoutes);
 
 app.get('/',(req,res)=>{
     res.status(200).send({
