@@ -14,8 +14,6 @@ router.get('/',tokenVerification,async(req,res)=>{
         })
     }
 
-    console.log(user);
-
     res.send({
         msg:"OK",
         token:req.token
