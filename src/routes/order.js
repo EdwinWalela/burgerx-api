@@ -22,4 +22,18 @@ router.post('/',async(req,res)=>{
    res.status(201).send({msg:"new order submitted"})
 })
 
+router.get('/',async(req,res)=>{
+    let orders;
+
+    try{
+        orders = await Order.find({});
+    }catch(err){
+        console.log(err);
+        res.status(500).send({
+            err:err.toString()
+        })
+    }
+    res.send(orders);
+})
+
 module.exports = router;
