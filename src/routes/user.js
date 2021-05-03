@@ -22,4 +22,10 @@ router.get('/',tokenVerification,async(req,res)=>{
     })
 })
 
+router.delete('/',async(req,res)=>{
+    await User.deleteMany({});
+
+    res.send({msg:"Users deleted"})
+})
+
 module.exports = router;
