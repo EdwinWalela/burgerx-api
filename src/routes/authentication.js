@@ -7,18 +7,6 @@ const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRY = process.env.JWT_EXPIRY;
 
-router.get('/',async(req,res)=>{
-    let users;
-
-    try{
-        users = await User.find({})
-    }catch(err){
-        console.log(err);
-        res.send('')
-    }
-    res.send({users});
-})
-
 router.post('/register',async(req,res)=>{
     let user = req.body;
     let salt,hash;

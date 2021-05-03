@@ -10,6 +10,7 @@ const DB_URI = process.env.DB_URI;
 const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/order');
 const authRoutes = require('./routes/authentication');
+const userRoutes = require('./routes/user');
 
 mongoose.connect(DB_URI,{useNewUrlParser:true,useUnifiedTopology:true},()=>{
     console.log('DB connection successful');
@@ -20,8 +21,9 @@ app.use(express.json());
 
 // Routes
 app.use('/api/menu',menuRoutes);
-app.use('/api/order',orderRoutes);
+app.use('/api/orders',orderRoutes);
 app.use('/api/auth',authRoutes);
+app.use('/api/users',userRoutes)
 
 app.get('/',(req,res)=>{
     res.status(200).send({
