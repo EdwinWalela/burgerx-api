@@ -11,6 +11,24 @@ router.post('/register',async(req,res)=>{
     let user = req.body;
     let salt,hash;
 
+    let exists;
+
+    try{ 
+        exists = await User.findOne({email:user.email});
+    }catch(err){
+        res.status(500).send({
+            err:err.toString()
+        });
+        return
+    }
+
+    if(exists){
+        res.status(401).send({
+            msg:"Email is already registered"
+        })
+        return;
+    }
+
     try{
         salt = await bcrypt.genSalt(SALT_ROUNDS);
     }catch(err){
@@ -64,6 +82,13 @@ router.post('/login',async(req,res)=>{
         res.status(500).send({
             err:err.toString()
         })
+    }
+
+    if(!user){
+        res.status(401).send({
+            msg:"email not registered"
+        })
+        return;
     }
 
     let isAuth = await bcrypt.compare(userRequest.password,user.password);
