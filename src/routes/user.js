@@ -6,7 +6,7 @@ router.get('/',tokenVerification,async(req,res)=>{
     let user;
 
     try{
-        user = await User.findById(req.user);
+        user = await User.findById(req.user,{password:0});
     }catch(err){
         console.log(err);
         res.status(500).send({
@@ -16,7 +16,8 @@ router.get('/',tokenVerification,async(req,res)=>{
 
     res.send({
         msg:"OK",
-        token:req.token
+        token:req.token,
+        user,
     })
 })
 

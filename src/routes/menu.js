@@ -13,6 +13,7 @@ router.get('/',async(req,res)=>{
             menu,
             error:err
         });
+        return
     }
     res.status(200).send(menu);
 });
