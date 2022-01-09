@@ -32,7 +32,7 @@ app.use('/api/users',userRoutes)
 
 app.get('/',(req,res)=>{
     res.status(200).send({
-        msg:"OK"
+        docs:"https://documenter.getpostman.com/view/4654837/UVXesJR2"
     })
 })
 
