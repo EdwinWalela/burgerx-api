@@ -12,9 +12,6 @@ const orderRoutes = require('./routes/order');
 const authRoutes = require('./routes/authentication');
 const userRoutes = require('./routes/user');
 
-
-
-
 mongoose.connect(DB_URI,{useNewUrlParser:true,useUnifiedTopology:true},()=>{
     console.log('DB connection successful');
 });
