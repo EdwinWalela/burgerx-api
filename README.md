@@ -2,6 +2,9 @@
 
 REST API for a fast food ordering mobile application called [BurderX](https://www.edwinwalela.com/projects/burgerx/)
 
+
+[API Documentation](https://documenter.getpostman.com/view/4654837/UVXesJR2)
+
 ## Tech Stack
 
 - NodeJS 
